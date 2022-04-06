@@ -87,4 +87,4 @@ Bot.on("guildMemberAdd", async(member) => {
   }
 })
 
-Bot.login("OTUwNDIyNjA3OTMxNTE0OTcw.YiYsBw.Qq74e0BCvnjSl2xBNwtwGkpU2LM")
+Bot.login(process.env['prefix'])

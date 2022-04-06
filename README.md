@@ -1,0 +1,2 @@
+# <img src="https://cdn.discordapp.com/avatars/950422607931514970/81ed33066760fbd446d40b898e614e74.webp" height="30"> CSDB-Bot
+Es un Bot creado para una Comunidad Privada que les ayuda de soporte General eh Informacion estra que se desee

@@ -1,0 +1,66 @@
+const express = require('express')
+const app = express()
+
+app.get('/', function (req, res) {
+  res.send('Prueba de Comandos')
+})
+  let port = process.env.PORT||3000;
+  app.listen(port)
+
+require('dotenv').config()
+
+//\\ - //\\ - //\\ - //\\ - //\\ - //\\ - //\\ - //\\ - //\\ - //\\- //\\
+
+const Discord = require("discord.js");
+const client = new Discord.Client();
+
+//\\ - //\\
+const ms = require("ms")
+const Database = require("@replit/database")
+const db = new Database()
+
+
+client.on("ready", () => {
+  db.get("token").then(t => console.log(t))
+  console.log("Vamo a provar comandos!")
+})
+
+
+let prefix = "!";
+client.on("message", (message) => {
+  
+  
+  if(message.author.bot)return;
+  try{
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const comando = args.shift().toLowerCase();
+    
+    if(message.content.startsWith(prefix+'temp')){
+      let tiempo = args[1];
+      let timer = ms(tiempo)
+      message.reply("Tiempo Establecido como: "+timer)
+        setTimeout(function(){ message.channel.send("Llego la hora")}, timer)
+    }else
+    if(comando== 'pepe'){
+      let timer = ms(args[0])
+      while (timer >= 0){
+        message.channel.send("El tiempo que falta es: "+ms(timer, {long: true}))
+        timer=timer-1000
+      }
+    }else
+    if(comando == 'juan'){
+      let timer = ms(args[0])
+      db.set("tiempo", timer)
+      db.get("tiempo").then(t => {
+        while (t >= 0){
+          temp = t
+          db.set("tiempo", t=temp-5)
+        }
+        setTimeout(function(){ message.channel.send("Llego la hora")}, t)
+          db.delete("tiempo")
+      })
+    }
+  }catch(e){
+    console.log(e)
+  }
+})

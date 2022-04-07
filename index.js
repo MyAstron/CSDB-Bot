@@ -22,9 +22,9 @@ const csdb = new Database()
   Bot.user.setPresence({
     status: "dnd",
     activity: {
-      name: " Clases. | "+prefijo+"horario",
-      type: "STREAMING",
-      url: "https://donboscogt.zoom.us/j/98213821625" //"https://www.twitch.tv/myastron"
+      name: " "+prefijo+"help",
+      type: "LISTENING",
+      url: "https://www.twitch.tv/myastron"
     }
   })
   console.log("I'm Ready BB. By")
@@ -87,4 +87,4 @@ Bot.on("guildMemberAdd", async(member) => {
   }
 })
 
-Bot.login(process.env['prefix'])
+Bot.login(process.env['token'])

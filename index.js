@@ -62,13 +62,52 @@ Bot.on("message", async(message) => {
       })
     }
   }*/
-  
-  if(!message.content.startsWith(prefix))return;
-    const file = require("./comandos/"+cmd)
-  try{
-    file.run(Discord, Util, Bot, prefix, args, cmd, message)
-  }catch(e){
-    console.log(e)
+  if(message.channel.id == "949348806355468369"){
+    const translate = require('node-google-translate-skidz');
+    const Chatbot  =  require("discord-chatbot");
+    let ChatArgs = message.content.slice("".length).trim().split(/ +/g).join(" ")
+      
+    const chatbot  =  new  Chatbot({name: "CSDB", gender: "Male"});
+
+    let que = ["que", "Que", "Qe", "qe", "Q", "q", "ke", "Ke"]
+    if(message.content.startsWith(prefix)){
+      message.channel.startTyping()
+        message.channel.send("¡Aqui no funcionan los comandos!")
+      message.channel.stopTyping()
+    }else
+    if(que.some(q => ChatArgs == q)){
+      message.channel.startTyping()
+        message.channel.send("so")
+      message.channel.stopTyping()
+    }else{
+      message.channel.startTyping()
+      translate({
+        text: ChatArgs,
+        source: 'es',
+        target: 'en'
+      }, function(result) {
+        chatbot.chat(result.translation).then(response=> {
+          translate({
+            text: response,
+            source: 'en',
+            target: 'es'
+          }, function(result) {
+              console.log(result)
+            message.channel.send(result.translation)
+            message.channel.stopTyping()
+          })
+        }).catch(e => console.log(e))
+      })
+    }
+      
+  }else{
+    if(!message.content.startsWith(prefix))return;
+      const file = require("./comandos/"+cmd)
+    try{
+      file.run(Discord, Util, Bot, prefix, args, cmd, message)
+    }catch(e){
+      console.log(e)
+    }
   }
 
 })

@@ -3,8 +3,8 @@ module.exports = {
 
     let horario;
     
-    switch (dia) {
-        case 'Lunes' || 'mon' || 'lun' || '1':
+    
+    if(['Lunes', 'lunes', 'lun', '1'].some(d => dia == d)){
           horario = 
 `\`\`\`ml
  ${clase[22]}     'Hora'
@@ -24,13 +24,12 @@ module.exports = {
 | ${clase[17]}| (20 min)        |
 ├―${clase[21]}┼―――――――――――――――――┤
 | ${clase[4]}| (11:40 - 12:20) |
-| ${clase[20]}| (12:30 -  1:10) |
+| ${clase[24]}| (12:30 -  1:10) |
 └―${clase[21]}┴―――――――――――――――――┘
           Horario Del 'Lunes'
 \`\`\``
-        break;
-        
-        case 'Martes' || 'tue' || 'mar' || '2':
+    }else
+    if(['Martes', 'martes', 'mar', '2'].some(d => dia == d)){
           horario = 
 `\`\`\`ml
  ${clase[22]}     'Hora'
@@ -50,13 +49,12 @@ module.exports = {
 | ${clase[17]}| (20 min)        |
 ├―${clase[21]}┼―――――――――――――――――┤
 | ${clase[4]}| (11:40 - 12:20) |
-| ${clase[20]}| (12:30 -  1:10) |
+| ${clase[24]}| (12:30 -  1:10) |
 └―${clase[21]}┴―――――――――――――――――┘
           Horario Del 'Martes'
 \`\`\``
-        break;
-        
-        case 'Miercoles' || 'wen' || 'mier' || '3':
+    }else
+    if(['miercoles', 'Miercoles', 'mie', '3'].some(d => dia == d)){
           horario = 
 `\`\`\`ml
  ${clase[22]}     'Hora'
@@ -76,13 +74,12 @@ module.exports = {
 | ${clase[17]}| (20 min)        |
 ├―${clase[21]}┼―――――――――――――――――┤
 | ${clase[12]}| (11:40 - 12:20) |
-| ${clase[20]}| (12:30 -  1:10) |
+| ${clase[24]}| (12:30 -  1:10) |
 └―${clase[21]}┴―――――――――――――――――┘
         Horario Del 'Miercoles'
 \`\`\``
-        break;
-        
-        case 'Jueves' || 'thu' || 'jue' || '4':
+    }else
+    if(['Jueves', 'jue', 'jueves', '4'].some(d => dia == d)){
           horario = 
 `\`\`\`ml
  ${clase[22]}     'Hora'
@@ -106,9 +103,8 @@ module.exports = {
 └―${clase[21]}┴―――――――――――――――――┘
           Horario Del 'Jueves'
 \`\`\``
-        break;
-        
-        case 'Viernes' || 'fri' || 'vi' || '5':
+    }else
+    if(['viernes', 'vie', 'viernes', '5'].some(d => dia == d)){
           horario = 
 `\`\`\`ml
  ${clase[22]}     'Hora'
@@ -128,11 +124,15 @@ module.exports = {
 | ${clase[17]}| (20 min)        |
 ├―${clase[21]}┼―――――――――――――――――┤
 | ${clase[16]}| (11:40 - 12:20) |
-| ${clase[20]}| (12:30 -  1:10) |
+| ${clase[24]}| (12:30 -  1:10) |
 └―${clase[21]}┴―――――――――――――――――┘
           Horario Del 'Viernes'
 \`\`\``
-        break;
+    }else{
+          horario = 
+`\`\`\`diff
+-  No reconozco "${dia}" como un Dia  -
+\`\`\``
     }
     
     const Awaiting = new Discord.MessageEmbed()

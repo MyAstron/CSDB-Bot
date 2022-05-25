@@ -35,7 +35,11 @@ module.exports = {
         "inline": true
       })
       .setFooter("Solicitud").setTimestamp()
-    message.channel.send(embed);
-    
+    if(args[0] == 'ping'){
+      const ping = require("./ping.js")
+      ping.run(Discord, Util, Bot, prefix, args, cmd, message)
+    }else{
+      message.channel.send(embed);
+    }
   }
 }

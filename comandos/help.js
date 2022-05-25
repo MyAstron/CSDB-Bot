@@ -61,16 +61,18 @@ module.exports = {
 `\`\`\`ml
       'CSDB'
 ${prefix}horario [dia]
+${prefix}notes
 
      'Extra'
 ${prefix}ip
-${prefix}bot
-${prefix}server
-${prefix}user             (En Mantenimiento)
+${prefix}bot [ip]
+${prefix}server [categoria]
+${prefix}user [@user]
 ${prefix}ping
 ${prefix}help [comando]
 ${prefix}say <texto>
 ${prefix}hack <@user>
+${prefix}ball8
 \`\`\``)
           .setColor("87CEFA")
           .setFooter("Sintaxis: [Opcional], <Requerido>")
